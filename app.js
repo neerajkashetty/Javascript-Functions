@@ -8,22 +8,32 @@ const DRAW = 'DRAW';
 const WIN = 'Your WInner';
 const LOST = 'You LOST';
 
+/*Arrow Functions and Terinary Operator */
+const decideWinner = (cChoice , pChoice) => 
+   cChoice === pChoice ? DRAW : ( 
+    cChoice === ROCK && pChoice === SCISSORS 
+  || cChoice === SCISSORS && pChoice === ROCK 
+  || cChoice === PAPER && pChoice === ROCK
+  || cChoice === SCISSORS && pChoice === PAPER
+  ) ? LOST : WIN;
 
-const decideWinner = function(cChoice , pChoice){
-  if(cChoice === pChoice){
-    return DRAW;
-  }else if ( 
-      cChoice === ROCK && pChoice === SCISSORS 
-    || cChoice === SCISSORS && pChoice === ROCK 
-    || cChoice === PAPER && pChoice === ROCK
-    || cChoice === SCISSORS && pChoice === PAPER
-    ){
-      return LOST
-    }
-    else{
-      return WIN
-    }
-}
+
+/* Without Terinary Operator */
+
+  // if(cChoice === pChoice){
+  //   return DRAW;
+  // }else if ( 
+  //     cChoice === ROCK && pChoice === SCISSORS 
+  //   || cChoice === SCISSORS && pChoice === ROCK 
+  //   || cChoice === PAPER && pChoice === ROCK
+  //   || cChoice === SCISSORS && pChoice === PAPER
+  //   ){
+  //     return LOST
+  //   }
+  //   else{
+  //     return WIN
+  //   }
+
 
 
 const computerChoice = function (){
