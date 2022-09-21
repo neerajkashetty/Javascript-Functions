@@ -4,6 +4,38 @@ const ROCK = 'ROCK';
 const PAPER = 'PAPER';
 const SCISSORS = 'SCISSORS';
 const DEFAULT_USER_CHOICE = ROCK;
+const DRAW = 'DRAW';
+const WIN = 'Your WInner';
+const LOST = 'You LOST';
+
+
+const decideWinner = function(cChoice , pChoice){
+  if(cChoice === pChoice){
+    return DRAW;
+  }else if ( 
+      cChoice === ROCK && pChoice === SCISSORS 
+    || cChoice === SCISSORS && pChoice === ROCK 
+    || cChoice === PAPER && pChoice === ROCK
+    || cChoice === SCISSORS && pChoice === PAPER
+    ){
+      return LOST
+    }
+    else{
+      return WIN
+    }
+}
+
+
+const computerChoice = function (){
+  const randomvalue = Math.random();
+  if (randomvalue < 0.36){
+    return ROCK;
+  }else if ( randomvalue < 0.76){
+    return PAPER;
+  }else {
+    return SCISSORS;
+  }
+}
 
 const getPlayerChoice = function() {
   const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, '').toUpperCase();
@@ -21,5 +53,7 @@ const getPlayerChoice = function() {
 startGameBtn.addEventListener('click', function() {
   console.log('Game is starting...');
   const playerSelection = getPlayerChoice();
-  console.log(playerSelection);
+  const computerSelection = computerChoice();
+  const Winner = decideWinner(computerSelection , playerSelection);
+  console.log(Winner);
 });
